@@ -20,11 +20,11 @@ export default class extends React.Component{
                 nowPlaying,
                 upcoming,
                 popular
-            })
+            });
         } catch {
             this.setState({
-                error: "Can't find movies information"
-            })
+                error: "Can't find movie information"
+            });
         } finally {
             this.setState({
                 loading: false
@@ -37,5 +37,5 @@ export default class extends React.Component{
         return (
             <HomePresenter nowPlaying={nowPlayng} upcoming={upcoming} popular={popular} error={error} loading={loading}/>
         );
-    };
+    }
 }
