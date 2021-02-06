@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 import Loader from "../../Components/Loader";
 import Section from "../../Components/Section";
+import Message from "../../Components/Message";
 
 const Container = styled.div``;
 
@@ -30,6 +31,9 @@ const SearchPresenter = ({movieResults, tvResults, searchTerm, handleSubmit, upd
             <Section title="TV Results">{tvResults.map(show => <span
                 key={show.id}>{show.name}</span>)}</Section>}
         </>}
+        {error && <Message text={error} color="#e74c3c"/>}
+        {tvResults && movieResults && tvResults.length === 0 && movieResults.length === 0 &&
+        <Message text="Nothing Found." color="#95a5a6"/>}
     </Container>;
 
 SearchPresenter.propTypes = {
