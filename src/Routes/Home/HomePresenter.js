@@ -17,9 +17,9 @@ const HomePresenter = ({nowPlaying, popular, upcoming, loading, error}) =>
             <Helmet>
                 <title>Loading | Nomflix</title>
             </Helmet>
-        <Loader />
+            <Loader/>
         </>
-        ) : (
+    ) : (
         <Container>
             <Helmet>
                 <title>Movies | Nomflix</title>
@@ -48,9 +48,9 @@ const HomePresenter = ({nowPlaying, popular, upcoming, loading, error}) =>
                                                                        year={movie.release_date && movie.release_date.substring(0, 4)}
                                                                        isMovie={true}/>)}</Section>
             )}
-            {error && <Message text={error} color="#e74c3c" />}
+            {error && <Message text={error} color="#e74c3c"/>}
         </Container>
-        );
+    );
 
 HomePresenter.propTypes = {
     nowPlaying: PropTypes.array,
