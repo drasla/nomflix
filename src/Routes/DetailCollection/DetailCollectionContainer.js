@@ -1,8 +1,8 @@
 import React from "react";
-import DetailPresenter from "./DetailPresenter";
 import {moviesApi, tvApi} from "../../api";
+import DetailCollectionPresenter from "./DetailCollectionPresenter";
 
-export default class DetailContainer extends React.Component {
+export default class extends React.Component {
     constructor(props) {
         super(props);
         const {location: {pathname}} = props;
@@ -41,7 +41,7 @@ export default class DetailContainer extends React.Component {
     render() {
         const {result, error, loading} = this.state;
         return (
-            <DetailPresenter result={result} error={error} loading={loading}/>
+            <DetailCollectionPresenter result={result} error={error} loading={loading}/>
         );
     }
 }

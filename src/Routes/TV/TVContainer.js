@@ -37,5 +37,5 @@ export default class extends React.Component{
         return(
             <TVPresenter topRated={topRated} popular={popular} airingToday={airingToday} error={error} loading={loading} />
         );
-    };
+    }
 }
