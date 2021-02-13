@@ -17,22 +17,23 @@ display: flex;
   align-items: center;
   border-color: ${props => (props.current ? "#24a476" : "white")};
   background-color: ${props => (props.current ? "#24a476" : "transparent")};
+  :nth-child(2) {
+    background-color: ${props => (props.current || props.seasons ? "#24a476" : "transparent")};
+  }
   color: white;
   transition: all .5s ease-in-out;
   &:hover{
     background-color: white;
     color: black;
   }
-  :nth-child(2) {
-    background-color: ${props => (props.current || props.seasons ? "#24a476" : "transparent")};
-  }
+
 `;
 
 const LLink = styled(Link)`
 text-decoration: none;
 `;
 
-export default withRouter(({ match: { params: {id, seasons_id} }, location: { pathname }}) => {
+export default withRouter(({ match: { params: {id, season_number}},  location: { pathname }}) => {
     if (pathname.substring(0,7) === "/movie/") {
         return (
             <TabContainer>
@@ -44,10 +45,12 @@ export default withRouter(({ match: { params: {id, seasons_id} }, location: { pa
             </TabContainer>
         );
     } else {
+        const subStringValue = 6 + id.length + 8;
+        const Value = pathname.substring(0, subStringValue);
         return (
             <TabContainer>
                 <Tab current={pathname === `/show/${id}/video`}><LLink to={`/show/${id}/video`}>Relative Video</LLink></Tab>
-                <Tab current={pathname === `/show/${id}/seasons`} seasons={pathname === `/show/${id}/seasons/${seasons_id}`}><LLink to={`/show/${id}/seasons`}>Seasons</LLink></Tab>
+                <Tab current={pathname === `/show/${id}/seasons`} seasons={Value === `/show/${id}/seasons`}><LLink to={`/show/${id}/seasons`}>Seasons</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/company`}><LLink to={`/show/${id}/company`}>Production Companies</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/country`}><LLink to={`/show/${id}/country`}>Production Countries</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/cast`}><LLink to={`/show/${id}/cast`}>Cast</LLink></Tab>

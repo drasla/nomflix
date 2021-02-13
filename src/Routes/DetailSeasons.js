@@ -64,7 +64,7 @@ export const DetailSeasons = (props) => {
     const {
         location: { pathname },
         match: {
-            params: { id, seasons_id },
+            params: { id, season_number },
             path
         },
 
@@ -82,8 +82,8 @@ export const DetailSeasons = (props) => {
         }
 
         try {
-                const { data: result } = await tvApi.showDetail(parsedId);
-                setResult(result);
+            const {data: result} = await tvApi.showDetail(parsedId);
+            setResult(result);
             setLoading(false);
         } catch (e) {
             setError(e);
@@ -103,7 +103,7 @@ export const DetailSeasons = (props) => {
                             {result.seasons.map(season =>
                                 <SeasonContainer key={season.index}>
                                     <List key={season.id}>
-                                        <Link to={`/show/${id}/seasons/${season.season_number}`} replace={true}>
+                                        <Link to={`/show/${id}/seasons/${season.season_number}`} season_number={`${season.season_number}`} replace={true}>
                                             {season.poster_path ? (
                                                 <Flag
                                                     src={`https://image.tmdb.org/t/p/w300${season.poster_path}`}/>) : ""}
