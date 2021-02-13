@@ -22,7 +22,8 @@ export const tvApi = {
         params: {
             query: encodeURIComponent(term)
         }
-    })
+    }),
+    season: (id, season_number) => api.get(`tv/${id}/season/${season_number}`)
 };
 
 export const moviesApi = {

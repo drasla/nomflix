@@ -23,13 +23,16 @@ display: flex;
     background-color: white;
     color: black;
   }
+  :nth-child(2) {
+    background-color: ${props => (props.current || props.seasons ? "#24a476" : "transparent")};
+  }
 `;
 
 const LLink = styled(Link)`
 text-decoration: none;
 `;
 
-export default withRouter(({ match: { params: {id} }, location: { pathname }}) => {
+export default withRouter(({ match: { params: {id, seasons_id} }, location: { pathname }}) => {
     if (pathname.substring(0,7) === "/movie/") {
         return (
             <TabContainer>
@@ -44,7 +47,7 @@ export default withRouter(({ match: { params: {id} }, location: { pathname }}) =
         return (
             <TabContainer>
                 <Tab current={pathname === `/show/${id}/video`}><LLink to={`/show/${id}/video`}>Relative Video</LLink></Tab>
-                <Tab current={pathname === `/show/${id}/Seasons`}><LLink to={`/show/${id}/Seasons`}>Seasons</LLink></Tab>
+                <Tab current={pathname === `/show/${id}/seasons`} seasons={pathname === `/show/${id}/seasons/${seasons_id}`}><LLink to={`/show/${id}/seasons`}>Seasons</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/company`}><LLink to={`/show/${id}/company`}>Production Companies</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/country`}><LLink to={`/show/${id}/country`}>Production Countries</LLink></Tab>
                 <Tab current={pathname === `/show/${id}/cast`}><LLink to={`/show/${id}/cast`}>Cast</LLink></Tab>

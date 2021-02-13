@@ -10,6 +10,7 @@ import {DetailCollection} from "./DetailCollection";
 import {DetailVideo} from "./DetailVideo";
 import {DetailCast} from "./DetailCast";
 import {moviesApi, tvApi} from "../api";
+import {DetailSeasons} from "./DetailSeasons";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -171,7 +172,7 @@ export const Detail = (props) => {
                             <Route exact path={`/movie/:id/country`} component={DetailCountry}/>
                             <Route exact path={`/movie/:id/cast`} component={DetailCast}/>
                             <Route exact path={`/show/:id/video`} component={DetailVideo}/>
-                            <Route exact path={`/show/:id/season`} component={DetailCollection}/>
+                            <Route path={`/show/:id/seasons`} component={DetailSeasons}/>
                             <Route exact path={`/show/:id/company`} component={DetailCompany}/>
                             <Route exact path={`/show/:id/country`} component={DetailCountry}/>
                             <Route exact path={`/show/:id/cast`} component={DetailCast}/>
