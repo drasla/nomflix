@@ -15,7 +15,7 @@ export const tvApi = {
     airingToday: () => api.get("tv/airing_today"),
     showDetail: (id) => api.get(`tv/${id}`, {
         params: {
-            append_to_response: "videos"
+            append_to_response: "videos,credits"
         }
     }),
     search: (term) => api.get("search/tv", {
@@ -31,7 +31,7 @@ export const moviesApi = {
     popular: () => api.get("movie/popular"),
     movieDetail: (id) => api.get(`movie/${id}`, {
         params: {
-            append_to_response: "videos"
+            append_to_response: "videos,credits"
         }
     }),
     search: (term) => api.get("search/movie", {
